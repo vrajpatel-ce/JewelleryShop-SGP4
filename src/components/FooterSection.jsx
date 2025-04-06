@@ -2,9 +2,9 @@ import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaWhatsapp } from "reac
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-10 w-[100vw] overflow-hidden px-10 flex justify-between items-start text-sm">
+    <footer className="bg-gray-900 text-white py-10 w-full overflow-hidden px-4 md:px-10 flex flex-col md:flex-row justify-between items-start text-sm">
       {/* Left Section */}
-      <div className="w-2/3 flex flex-col gap-3">
+      <div className="w-full md:w-2/3 flex flex-col gap-3 mb-8 md:mb-0">
         <img src="/images/logo.png" alt="Logo" className="w-32" />
         <p className="text-gray-400">123, Main Street, Your City</p>
         <p className="text-gray-400">Owner: John Doe</p>
@@ -21,7 +21,7 @@ export function Footer() {
       </div>
 
       {/* Right Section */}
-      <div className="w-1/3">
+      <div className="w-full md:w-1/3">
         <h2 className="text-lg font-semibold text-gray-300">FEEDBACK</h2>
         <input type="text" placeholder="Full Name" className="w-full bg-transparent border-b border-gray-500 outline-none text-white py-1 mt-2" />
         <input type="text" placeholder="Mobile No:" className="w-full bg-transparent border-b border-gray-500 outline-none text-white py-1 mt-2" />
