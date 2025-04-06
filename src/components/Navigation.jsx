@@ -60,6 +60,12 @@ function Navigation() {
     ]
   };
 
+  // Function to handle product category clicks
+  const handleProductClick = (category) => {
+    setJewelleryOpen(false); // Close the dropdown
+    // You can add additional logic here if needed
+  };
+
   return (
     <>
       <nav className="bg-white p-4 md:p-6 shadow-md border-b border-gray-200 sticky top-0 z-50 w-full">
@@ -103,13 +109,14 @@ function Navigation() {
                           <div key={idx} className="space-y-3">
                             {row.map((item, index) => (
                               item && (
-                                <a
+                                <Link
                                   key={index}
-                                  href="#"
+                                  to={item === 'CHAIN' ? '/chains' : item === 'RINGS' ? '/rings' : '#'}
                                   className="block text-sm text-gray-600 hover:text-red-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
+                                  onClick={() => handleProductClick(item)}
                                 >
                                   {item}
-                                </a>
+                                </Link>
                               )
                             ))}
                           </div>
@@ -122,13 +129,14 @@ function Navigation() {
                       <h3 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-yellow-500 inline-block">METALS</h3>
                       <div className="space-y-3">
                         {categories.METALS.map((item, index) => (
-                          <a
+                          <Link
                             key={index}
-                            href="#"
+                            to={item === 'GOLD' ? '/gold' : '#'}
                             className="block text-sm text-gray-600 hover:text-yellow-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
+                            onClick={() => handleProductClick(item)}
                           >
                             {item}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -138,13 +146,14 @@ function Navigation() {
                       <h3 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-pink-500 inline-block">WEDDING</h3>
                       <div className="space-y-3">
                         {categories.WEDDING.map((item, index) => (
-                          <a
+                          <Link
                             key={index}
-                            href="#"
+                            to="#"
                             className="block text-sm text-gray-600 hover:text-pink-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
+                            onClick={() => handleProductClick(item)}
                           >
                             {item}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -154,13 +163,14 @@ function Navigation() {
                       <h3 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-purple-500 inline-block">FOR</h3>
                       <div className="space-y-3">
                         {categories.FOR.map((item, index) => (
-                          <a
+                          <Link
                             key={index}
-                            href="#"
+                            to="#"
                             className="block text-sm text-gray-600 hover:text-purple-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
+                            onClick={() => handleProductClick(item)}
                           >
                             {item}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -170,13 +180,14 @@ function Navigation() {
                       <h3 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-green-500 inline-block">PURITY</h3>
                       <div className="space-y-3">
                         {categories.PURITY.map((item, index) => (
-                          <a
+                          <Link
                             key={index}
-                            href="#"
+                            to="#"
                             className="block text-sm text-gray-600 hover:text-green-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
+                            onClick={() => handleProductClick(item)}
                           >
                             {item}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
