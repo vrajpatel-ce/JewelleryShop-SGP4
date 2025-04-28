@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiUser } from "react-icons/fi"; // Import user icon
 import { useLogin } from "../context/LoginContext";
 import LoginCard from "./LoginCard";
+// import {Aboutus} from "./Aboutus"
 import { Link } from "react-router-dom";
 
 function Navigation() {
@@ -231,12 +232,13 @@ function Navigation() {
               }}
             >
               <a
-                href="#"
+                href=""
                 className="text-gray-600 text-lg font-medium hover:text-gray-900 transition duration-300 border-b-2 border-transparent hover:border-gray-900"
               >
                 About Us
               </a>
 
+               
               {/* About Dropdown Menu */}
               {aboutOpen && (
                 <ul
@@ -279,7 +281,7 @@ function Navigation() {
                 Ambassador
               </a>
             </li>
-          </ul>
+          </ul>  
 
           {/* User Profile/Login Button */}
           <div className="absolute right-4 md:right-6">
