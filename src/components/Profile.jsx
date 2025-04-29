@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLogin } from '../context/LoginContext';
-import { FiUser, FiMail, FiCalendar, FiMapPin, FiShoppingBag, FiHeart, FiEdit2 } from 'react-icons/fi';
+import { useCart } from '../context/CartContext';
+import { FiUser, FiMail, FiCalendar, FiMapPin, FiShoppingBag, FiHeart, FiEdit2, FiTrash2, FiMinus, FiPlus } from 'react-icons/fi';
 
 const Profile = () => {
   const { user, handleSignOut } = useLogin();
+  const { cartItems, total, removeFromCart, updateQuantity } = useCart();
 
   if (!user) {
     return (
@@ -51,43 +53,76 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-            <div className="flex items-center">
-              <div className="bg-red-50 p-3 rounded-lg">
-                <FiShoppingBag className="text-red-500 text-2xl" />
-              </div>
-              <div className="ml-4">
-                <p className="text-gray-500 text-sm">Total Orders</p>
-                <h3 className="text-2xl font-bold text-gray-800">12</h3>
-              </div>
-            </div>
+        {/* Shopping Cart Section */}
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+          <div className="p-6 border-b border-gray-100">
+            <h2 className="text-xl font-semibold text-gray-800">Your Cart</h2>
           </div>
-
-          <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-            <div className="flex items-center">
-              <div className="bg-red-50 p-3 rounded-lg">
-                <FiHeart className="text-red-500 text-2xl" />
-              </div>
-              <div className="ml-4">
-                <p className="text-gray-500 text-sm">Wishlist Items</p>
-                <h3 className="text-2xl font-bold text-gray-800">8</h3>
-              </div>
+          {cartItems.length === 0 ? (
+            <div className="p-6 text-center">
+              <p className="text-gray-600">Your cart is empty</p>
             </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-            <div className="flex items-center">
-              <div className="bg-red-50 p-3 rounded-lg">
-                <FiMapPin className="text-red-500 text-2xl" />
+          ) : (
+            <>
+              <div className="divide-y divide-gray-100">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="p-6 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-4">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="w-20 h-20 object-cover rounded-md"
+                      />
+                      <div className="flex-1">
+                        <h4 className="font-medium text-gray-800">{item.name}</h4>
+                        <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
+                        <div className="flex items-center space-x-2 mt-2">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="p-1 rounded-full hover:bg-gray-100"
+                            disabled={item.quantity <= 1}
+                          >
+                            <FiMinus className="w-4 h-4" />
+                          </button>
+                          <span className="w-8 text-center">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="p-1 rounded-full hover:bg-gray-100"
+                          >
+                            <FiPlus className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-medium text-gray-800">₹{(item.price * item.quantity).toFixed(2)}</p>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-red-500 hover:text-red-600 mt-2"
+                        >
+                          <FiTrash2 className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="ml-4">
-                <p className="text-gray-500 text-sm">Saved Addresses</p>
-                <h3 className="text-2xl font-bold text-gray-800">3</h3>
+              <div className="p-6 border-t border-gray-100">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-lg font-medium text-gray-800">Total:</span>
+                  <span className="text-xl font-bold text-gray-900">₹{total.toFixed(2)}</span>
+                </div>
+                <button
+                  className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
+                  onClick={() => {
+                    // TODO: Implement checkout functionality
+                    console.log('Proceeding to checkout...');
+                  }}
+                >
+                  Proceed to Checkout
+                </button>
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </div>
 
         {/* Recent Orders */}

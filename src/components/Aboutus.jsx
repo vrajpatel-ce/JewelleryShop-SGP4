@@ -1,111 +1,180 @@
-import React from "react";
+import React from 'react';
+import { FiAward, FiHeart, FiGem, FiUsers } from 'react-icons/fi';
 
-export function AboutUs () {
+const AboutUs = () => {
+  const milestones = [
+    {
+      year: "1995",
+      title: "The Beginning",
+      description: "Started as a small family jewellery workshop with a dream to create timeless pieces."
+    },
+    {
+      year: "2005",
+      title: "Expansion",
+      description: "Opened our first flagship store, bringing elegant designs to a wider audience."
+    },
+    {
+      year: "2015",
+      title: "Innovation",
+      description: "Introduced modern design techniques while preserving traditional craftsmanship."
+    },
+    {
+      year: "2023",
+      title: "Global Recognition",
+      description: "Recognized internationally for our unique designs and quality craftsmanship."
+    }
+  ];
+
+  const values = [
+    {
+      icon: <FiGem className="w-6 h-6" />,
+      title: "Quality Craftsmanship",
+      description: "Every piece is crafted with meticulous attention to detail and the finest materials."
+    },
+    {
+      icon: <FiHeart className="w-6 h-6" />,
+      title: "Passion for Design",
+      description: "Our designs blend traditional aesthetics with contemporary elegance."
+    },
+    {
+      icon: <FiUsers className="w-6 h-6" />,
+      title: "Customer Trust",
+      description: "Building lasting relationships through transparency and exceptional service."
+    },
+    {
+      icon: <FiAward className="w-6 h-6" />,
+      title: "Excellence",
+      description: "Committed to maintaining the highest standards in jewellery crafting."
+    }
+  ];
+
   return (
-    <div className="bg-white text-gray-800">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gray-100 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">About Us</h1>
-          <p className="text-xl text-gray-600">
-            Discover the story behind Elegant Jewelry and our commitment to crafting timeless pieces.
-          </p>
-        </div>
-      </div>
-
-      {/* Our Story Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Our Story</h2>
-          <p className="text-gray-600 mb-4">
-            Elegant Jewelry was founded in 2010 with a vision to create exquisite, handcrafted jewelry that tells a story. Our journey began in a small workshop, where passion and precision came together to create pieces that celebrate life's most precious moments.
-          </p>
-          <p className="text-gray-600">
-            Today, we are proud to serve customers worldwide, offering a curated collection of rings, necklaces, bracelets, and more. Each piece is a testament to our dedication to quality and craftsmanship.
-          </p>
-        </div>
-      </div>
-
-      {/* Mission & Vision Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Mission */}
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-              <p className="text-gray-600">
-                To create timeless, elegant jewelry that inspires and empowers our customers, while maintaining the highest standards of craftsmanship and sustainability.
-              </p>
-            </div>
-
-            {/* Vision */}
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-              <p className="text-gray-600">
-                To be the world's most trusted and beloved jewelry brand, known for our exceptional designs and unwavering commitment to quality.
-              </p>
-            </div>
+      <div className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}>
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white px-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">Our Story</h1>
+            <p className="text-xl md:text-2xl max-w-2xl mx-auto">
+              A legacy of crafting timeless elegance since 1995
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Team Section */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Meet Our Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Team Member 1 - Vraj Patel */}
-          <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-gray-600">
-              VP
+      {/* Founder's Story */}
+      <div className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="md:flex items-center gap-12">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <div className="relative">
+                <div className="aspect-w-4 aspect-h-5">
+                  <img
+                    src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Kaushil Soni"
+                    className="object-cover rounded-2xl shadow-2xl"
+                  />
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg">
+                  <p className="font-medium">Since 1995</p>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold">Vraj Patel</h3>
-            <p className="text-gray-600">Co-Founder & CEO</p>
-          </div>
-
-          {/* Team Member 2 - Meet Patel */}
-          <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-gray-600">
-              MP
+            <div className="md:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Meet Kaushil Soni
+              </h2>
+              <div className="space-y-6 text-gray-600">
+                <p>
+                  For over two decades, Kaushil Soni has been the creative force behind our elegant jewellery designs. His journey began in 1995 with a simple yet powerful vision: to create jewellery that captures the essence of timeless beauty while embracing contemporary design.
+                </p>
+                <p>
+                  Drawing inspiration from India's rich cultural heritage and combining it with modern aesthetics, Kaushil has developed a unique style that resonates with jewelry enthusiasts worldwide. Each piece tells a story of craftsmanship, passion, and dedication to excellence.
+                </p>
+                <p>
+                  "My philosophy is simple - every piece of jewellery should not just be worn, but experienced. It should make the wearer feel special, confident, and connected to our rich tradition of craftsmanship."
+                </p>
+                <p className="italic">- Kaushil Soni</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold">Meet Patel</h3>
-            <p className="text-gray-600">Creative Director</p>
-          </div>
-
-          {/* Team Member 3 - Manav Patel */}
-          <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-gray-600">
-              MP
-            </div>
-            <h3 className="text-xl font-bold">Manav Patel</h3>
-            <p className="text-gray-600">Head of Operations</p>
-          </div>
-
-          {/* Team Member 4 - Trush Patel */}
-          <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-            <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-gray-600">
-              TP
-            </div>
-            <h3 className="text-xl font-bold">Trush Patel</h3>
-            <p className="text-gray-600">Marketing Lead</p>
           </div>
         </div>
       </div>
 
-      {/* Call to Action Section */}
-      <div className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Join Our Journey</h2>
-          <p className="text-gray-400 mb-8">
-            Explore our collection and become a part of the Elegant Jewelry family.
-          </p>
-          <a
-            href="/shop"
-            className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300"
-          >
-            Shop Now
-          </a>
+      {/* Timeline Section */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">Our Journey</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {milestones.map((milestone, index) => (
+              <div key={index} className="relative">
+                <div className="text-red-600 text-2xl font-bold mb-2">{milestone.year}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{milestone.title}</h3>
+                <p className="text-gray-600">{milestone.description}</p>
+                {index !== milestones.length - 1 && (
+                  <div className="hidden md:block absolute top-4 -right-4 w-8 h-0.5 bg-red-600"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Values Section */}
+      <div className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">Our Values</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-red-100 text-red-600 rounded-full mb-4">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Workshop Section */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="md:flex items-center gap-12">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Our Workshop
+              </h2>
+              <div className="space-y-6 text-gray-600">
+                <p>
+                  In our state-of-the-art workshop, traditional craftsmanship meets modern technology. Every piece of jewellery is crafted with precision, passion, and attention to detail that has become synonymous with the Kaushil Soni name.
+                </p>
+                <p>
+                  Our master craftsmen, many of whom have been with us for decades, bring their expertise and dedication to every creation. Using the finest materials and cutting-edge techniques, we ensure that each piece meets our exacting standards of quality and beauty.
+                </p>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="grid grid-cols-2 gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Workshop"
+                  className="rounded-lg shadow-lg"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Craftsmanship"
+                  className="rounded-lg shadow-lg mt-8"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default AboutUs;

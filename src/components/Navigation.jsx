@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FiUser } from "react-icons/fi"; // Import user icon
 import { useLogin } from "../context/LoginContext";
+import { useProducts } from "../context/ProductContext";
 import LoginCard from "./LoginCard";
 // import {Aboutus} from "./Aboutus"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,8 @@ function Navigation() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [jewelleryOpen, setJewelleryOpen] = useState(false);
   const { user, handleSignOut } = useLogin();
+  const { updateFilters } = useProducts();
+  const navigate = useNavigate();
   let timeoutId; // Used to delay hiding the dropdown
 
   const categories = {
@@ -64,7 +67,14 @@ function Navigation() {
   // Function to handle product category clicks
   const handleProductClick = (category) => {
     setJewelleryOpen(false); // Close the dropdown
-    // You can add additional logic here if needed
+    console.log('Clicking category:', category); // Debug log
+    updateFilters({ 
+      category: category.toUpperCase(),
+      metal: null,
+      priceRange: null,
+      sortBy: 'newest'
+    }); // Reset other filters and update category
+    navigate('/products'); // Navigate to products page
   };
 
   return (
@@ -112,7 +122,7 @@ function Navigation() {
                               item && (
                                 <Link
                                   key={index}
-                                  to={item === 'CHAIN' ? '/chains' : item === 'RINGS' ? '/rings' : '#'}
+                                  to="/products"
                                   className="block text-sm text-gray-600 hover:text-red-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
                                   onClick={() => handleProductClick(item)}
                                 >
@@ -132,7 +142,7 @@ function Navigation() {
                         {categories.METALS.map((item, index) => (
                           <Link
                             key={index}
-                            to={item === 'GOLD' ? '/gold' : '#'}
+                            to="/products"
                             className="block text-sm text-gray-600 hover:text-yellow-600 hover:translate-x-1 transform transition-all duration-200 ease-in-out"
                             onClick={() => handleProductClick(item)}
                           >
@@ -205,19 +215,19 @@ function Navigation() {
               )}
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/offers"
                 className="text-gray-600 text-lg font-medium hover:text-gray-900 transition duration-300 border-b-2 border-transparent hover:border-gray-900"
               >
                 Offers
-              </a>
+              </Link>
             </li>
           </ul>
 
           {/* Logo Centered */}
-          <h1 className="text-gray-800 text-2xl md:text-3xl font-bold tracking-wide mx-5">
+          <Link to="/" className="text-gray-800 text-2xl md:text-3xl font-bold tracking-wide mx-5">
             Logo
-          </h1>
+          </Link>
 
           {/* Right Section */}
           <ul className="hidden md:flex space-x-8">
@@ -274,12 +284,12 @@ function Navigation() {
               )}
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/ambassador"
                 className="text-gray-600 text-lg font-medium hover:text-gray-900 transition duration-300 border-b-2 border-transparent hover:border-gray-900"
               >
                 Ambassador
-              </a>
+              </Link>
             </li>
           </ul>  
 
