@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiAward, FiHeart, FiGem, FiUsers } from 'react-icons/fi';
 
-const AboutUs = () => {
+const Aboutus = () => {
   const milestones = [
     {
       year: "1995",
@@ -177,4 +177,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Aboutus;

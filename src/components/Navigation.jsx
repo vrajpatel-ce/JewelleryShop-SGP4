@@ -241,12 +241,12 @@ function Navigation() {
                 timeoutId = setTimeout(() => setAboutOpen(false), 300);
               }}
             >
-              <a
-                href=""
+              <Link 
+                to="/aboutus"
                 className="text-gray-600 text-lg font-medium hover:text-gray-900 transition duration-300 border-b-2 border-transparent hover:border-gray-900"
               >
                 About Us
-              </a>
+              </Link>
 
                
               {/* About Dropdown Menu */}
@@ -283,6 +283,7 @@ function Navigation() {
                 </ul>
               )}
             </li>
+            
             <li>
               <Link
                 to="/ambassador"

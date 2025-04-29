@@ -13,6 +13,7 @@ import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart';
 import Offers from './components/Offers';
 import Ambassador from './components/Ambassador';
+import Aboutus from './components/Aboutus';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/offers" element={<Offers />} />
+                  <Route path="/aboutus" element={<Aboutus />} />
                   <Route path="/ambassador" element={<Ambassador />} />
                 </Routes>
               </main>
